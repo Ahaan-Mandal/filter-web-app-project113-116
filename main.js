@@ -1,5 +1,8 @@
-function preload() {
+mustacheX=0;
+mustacheY=0;
 
+function preload() {
+mustache=loadImage('https://i.postimg.cc/7ZBcjDqp/clownnose.png');
 }
 
 function setup() {
@@ -15,6 +18,7 @@ function setup() {
 
 function draw(){
     image(video,0,0,300,300);
+    image(clown_nose,mustacheX,mustacheY,50,50);
 }
 
 function take_snapshot(){
@@ -30,8 +34,9 @@ function modelLoaded(){
 
 function gotPoses(results){
     if (results.length > 0) {
-        console.log(results);
-        console.log("nose x=" + results[0].pose.nose.x);
-        console.log("nose y=" + results[0].pose.nose.y);
+        mustacheX=results[0].pose.nose.x-20;
+        mustacheY=results[0].pose.nose.y-20;
+        console.log("mustache x=" + noseX);
+        console.log("mustache y=" + noseY);
     }
 }
